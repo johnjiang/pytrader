@@ -1,0 +1,374 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<body>
+<h2>Bollinger Strategy Tests</h2>
+
+<p>Given the following prices for a particular stock</p>
+
+
+<table concordion:execute="add_price(#date, #price)">
+    <tr>
+        <th concordion:set="#date">Date</th>
+        <th concordion:set="#price">Price</th>
+    </tr>
+    <tr>
+        <td>3/01/05</td>
+        <td>197.4</td>
+    </tr>
+    <tr>
+        <td>4/01/05</td>
+        <td>201.4</td>
+    </tr>
+    <tr>
+        <td>5/01/05</td>
+        <td>193.45</td>
+    </tr>
+    <tr>
+        <td>6/01/05</td>
+        <td>195.08</td>
+    </tr>
+    <tr>
+        <td>7/01/05</td>
+        <td>190.64</td>
+    </tr>
+    <tr>
+        <td>10/01/05</td>
+        <td>194.5</td>
+    </tr>
+    <tr>
+        <td>11/01/05</td>
+        <td>195.62</td>
+    </tr>
+    <tr>
+        <td>12/01/05</td>
+        <td>194.33</td>
+    </tr>
+    <tr>
+        <td>13/01/05</td>
+        <td>195.38</td>
+    </tr>
+    <tr>
+        <td>14/01/05</td>
+        <td>196</td>
+    </tr>
+    <tr>
+        <td>18/01/05</td>
+        <td>200.97</td>
+    </tr>
+    <tr>
+        <td>19/01/05</td>
+        <td>204.65</td>
+    </tr>
+    <tr>
+        <td>20/01/05</td>
+        <td>192.5</td>
+    </tr>
+    <tr>
+        <td>21/01/05</td>
+        <td>194.54</td>
+    </tr>
+    <tr>
+        <td>24/01/05</td>
+        <td>188.69</td>
+    </tr>
+    <tr>
+        <td>25/01/05</td>
+        <td>181.94</td>
+    </tr>
+    <tr>
+        <td>26/01/05</td>
+        <td>179.27</td>
+    </tr>
+    <tr>
+        <td>27/01/05</td>
+        <td>188.76</td>
+    </tr>
+    <tr>
+        <td>28/01/05</td>
+        <td>190.02</td>
+    </tr>
+    <tr>
+        <td>31/01/05</td>
+        <td>193.69</td>
+    </tr>
+</table>
+
+<p>Given an N-period of <b><span concordion:set="#n">5</span></b> and band-width of <b><span
+        concordion:set="#k">0.5</span></b>.
+    When we <b><span concordion:execute="run_strategy(#n, #k)">run</span></b> our strategy we are provided with the
+    following:
+</p>
+
+<table concordion:verifyRows="#result : get_moving_means()">
+    <tr>
+        <th concordion:assertEquals="#result">Moving Means</th>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td>195.594</td>
+    </tr>
+    <tr>
+        <td>195.014</td>
+    </tr>
+    <tr>
+        <td>193.858</td>
+    </tr>
+    <tr>
+        <td>194.034</td>
+    </tr>
+    <tr>
+        <td>194.094</td>
+    </tr>
+    <tr>
+        <td>195.166</td>
+    </tr>
+    <tr>
+        <td>196.46</td>
+    </tr>
+    <tr>
+        <td>198.266</td>
+    </tr>
+    <tr>
+        <td>197.9</td>
+    </tr>
+    <tr>
+        <td>197.732</td>
+    </tr>
+    <tr>
+        <td>196.27</td>
+    </tr>
+    <tr>
+        <td>192.464</td>
+    </tr>
+    <tr>
+        <td>187.388</td>
+    </tr>
+    <tr>
+        <td>186.64</td>
+    </tr>
+    <tr>
+        <td>185.736</td>
+    </tr>
+    <tr>
+        <td>186.736</td>
+    </tr>
+</table>
+
+<table concordion:verifyRows="#result : get_upper_bands()">
+    <tr>
+        <th concordion:assertEquals="#result">Upper Bands</th>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td>197.415734338481</td>
+    </tr>
+    <tr>
+        <td>196.783569439157</td>
+    </tr>
+    <tr>
+        <td>194.739251382978</td>
+    </tr>
+    <tr>
+        <td>194.912450909272</td>
+    </tr>
+    <tr>
+        <td>194.992140300844</td>
+    </tr>
+    <tr>
+        <td>195.489258410563</td>
+    </tr>
+    <tr>
+        <td>197.621046941342</td>
+    </tr>
+    <tr>
+        <td>200.228433693147</td>
+    </tr>
+    <tr>
+        <td>200.069191093472</td>
+    </tr>
+    <tr>
+        <td>199.955801699792</td>
+    </tr>
+    <tr>
+        <td>199.15943420067</td>
+    </tr>
+    <tr>
+        <td>196.190978132482</td>
+    </tr>
+    <tr>
+        <td>190.342331396441</td>
+    </tr>
+    <tr>
+        <td>189.355822159126</td>
+    </tr>
+    <tr>
+        <td>187.88590837014</td>
+    </tr>
+    <tr>
+        <td>189.400414757503</td>
+    </tr>
+</table>
+
+<table concordion:verifyRows="#result : get_lower_bands()">
+    <tr>
+        <th concordion:assertEquals="#result">Upper Bands</th>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td>193.772265661519</td>
+    </tr>
+    <tr>
+        <td>193.244430560843</td>
+    </tr>
+    <tr>
+        <td>192.976748617022</td>
+    </tr>
+    <tr>
+        <td>193.155549090728</td>
+    </tr>
+    <tr>
+        <td>193.195859699156</td>
+    </tr>
+    <tr>
+        <td>194.842741589437</td>
+    </tr>
+    <tr>
+        <td>195.298953058658</td>
+    </tr>
+    <tr>
+        <td>196.303566306853</td>
+    </tr>
+    <tr>
+        <td>195.730808906528</td>
+    </tr>
+    <tr>
+        <td>195.508198300208</td>
+    </tr>
+    <tr>
+        <td>193.38056579933</td>
+    </tr>
+    <tr>
+        <td>188.737021867518</td>
+    </tr>
+    <tr>
+        <td>184.433668603559</td>
+    </tr>
+    <tr>
+        <td>183.924177840874</td>
+    </tr>
+    <tr>
+        <td>183.58609162986</td>
+    </tr>
+    <tr>
+        <td>184.071585242497</td>
+    </tr>
+</table>
+
+<p>Therefore, we should have transactions with the following dates and prices</p>
+<table concordion:verifyRows="#result : get_transactions()">
+    <tr>
+        <th concordion:assertEquals="#result.date">Date</th>
+        <th concordion:assertEquals="#result.price">Price</th>
+        <th concordion:assertEquals="#result.units">Units</th>
+    </tr>
+    <tr>
+        <td>07/01/05</td>
+        <td>190.64</td>
+        <td>-10</td>
+    </tr>
+    <tr>
+        <td>11/01/05</td>
+        <td>195.62</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>13/01/05</td>
+        <td>195.38</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>14/01/05</td>
+        <td>196.0</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>18/01/05</td>
+        <td>200.97</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>19/01/05</td>
+        <td>204.65</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>20/01/05</td>
+        <td>192.5</td>
+        <td>-10</td>
+    </tr>
+    <tr>
+        <td>21/01/05</td>
+        <td>194.54</td>
+        <td>-10</td>
+    </tr>
+    <tr>
+        <td>24/01/05</td>
+        <td>188.69</td>
+        <td>-10</td>
+    </tr>
+    <tr>
+        <td>25/01/05</td>
+        <td>181.94</td>
+        <td>-10</td>
+    </tr>
+    <tr>
+        <td>26/01/05</td>
+        <td>179.27</td>
+        <td>-10</td>
+    </tr>
+    <tr>
+        <td>28/01/05</td>
+        <td>190.02</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>31/01/05</td>
+        <td>193.69</td>
+        <td>10</td>
+    </tr>
+</table>
+
+</body>
+</html>
